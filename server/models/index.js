@@ -10,7 +10,7 @@ module.exports = {
       });
     }, // a function which produces all the messages
     post: function (array, cb) {
-      var beard = 'insert into messages(text, user_id, roomname) value (?, (select id from users where username = ? limit 1), ?);';
+      var beard = 'insert into messages(text, user_id, roomname) values (?, (select id from users where username = ? limit 1), ?);';
       db.query(beard, array, function(err, data) {
         cb(err, data);
       });
@@ -25,7 +25,7 @@ module.exports = {
       });
     }, 
     post: function (array, cb) {
-      var finger = 'insert into users(username) value (?);';
+      var finger = 'insert into users(username) values (?);';
       db.query(finger, array, function(err, data) {
         cb(err, data);
       });
